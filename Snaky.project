@@ -98,6 +98,6 @@
     </Configuration>
   </Settings>
   <VirtualDirectory Name="src">
-    <File Name="main.cpp"/>
+    <File Name="main.cpp" ExcludeProjConfig=""/>
   </VirtualDirectory>
 </CodeLite_Project>
