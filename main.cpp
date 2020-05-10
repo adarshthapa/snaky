@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <thread>
 #include <chrono> 
+#include <conio.h>
 using namespace std;
 
 bool gameOver;
@@ -46,10 +47,16 @@ void visual() {
         for (int j = 0; j < WIDTH; j++) {
             if (j == 0)
                 cout << "#";
-                cout << " ";
+                
+                if (i==y && j ==x)
+                    cout << "🐍";
+                else if (i == foodY && j == foodX) 
+                    cout << "🐹";
+                else
+                    cout << " ";
                     
-                if (j == WIDTH-1)
-                    cout << "#";
+                    if (j == WIDTH-1)
+                        cout << "#";
         }
         cout << endl;
     }
@@ -67,7 +74,25 @@ void logic() {
 }
 
 void input() {
-    
+    // adding w, a, s, d keys for the directions and t to terminate the game
+    if (_kbhit()) {
+        switch (_getch()) {
+            case "w":
+                dir = UP;
+                break;
+            case "a":
+                dir = LEFT;
+                break;
+            case "s":
+                dir = DOWN;
+                break;
+            case "d":
+                dir = RIGHT;
+                break;
+            case "t":
+                gameOver = true;
+        }
+    }
 }
 
 int main() {
