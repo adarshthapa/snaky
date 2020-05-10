@@ -1,5 +1,7 @@
 #include <iostream>
-#include <cstdlib>
+#include <stdlib.h>
+#include <thread>
+#include <chrono> 
 using namespace std;
 
 bool gameOver;
@@ -45,6 +47,7 @@ void visual() {
             if (j == 0)
                 cout << "#";
                 cout << " ";
+                    
                 if (j == WIDTH-1)
                     cout << "#";
         }
@@ -74,6 +77,7 @@ int main() {
         visual();
         input();
         logic();
+        std::this_thread::sleep_for (std::chrono::seconds(10));
     }
     
     return 0;
