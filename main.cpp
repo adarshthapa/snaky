@@ -67,6 +67,7 @@ void visual() {
     }
     
     cout << endl;
+    cout << "Score" << score << endl;
 }
 
 void logic() {
@@ -86,6 +87,14 @@ void logic() {
         default:
             break;
      }
+     
+     //  if position of snake equals with the position of the food, then eat the food, increment score and spawn food to new random location
+     if (x == foodX && y == foodY) {
+         score++;
+         foodX = rand() % WIDTH;
+         foodY = rand() % HEIGHT;
+     }
+     
 }
 
 void input() {
