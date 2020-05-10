@@ -70,7 +70,22 @@ void visual() {
 }
 
 void logic() {
-     
+     switch (dir) {
+         case UP:
+            y--; // helps to move the snake upwards
+            break;
+        case LEFT:
+            x--; // helps to move the snake leftwards
+            break;
+        case DOWN:
+            y++; // helps to move the snake downwards
+            break;
+        case RIGHT:
+            x++; // helps to move the snake rightwards
+            break;
+        default:
+            break;
+     }
 }
 
 void input() {
@@ -91,6 +106,7 @@ void input() {
                 break;
             case "t":
                 gameOver = true;
+                break;
         }
     }
 }
