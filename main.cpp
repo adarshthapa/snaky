@@ -132,6 +132,13 @@ void logic() {
          y = WIDTH - 1; // if snake hits up most coordinate, then it will transfer to last coordinate of the down side of the arena
      }
      
+     // if head of the snakes collides with it's tail, than game over
+     for (int i = o; i < nTail; i++) {
+         if (tailX[i] == x && tailY[i] == y) {
+             gameOver = true;
+         }
+     }
+     
      //  if position of snake equals with the position of the food, then eat the food, increment score and spawn food to new random location
      if (x == foodX && y == foodY) {
          score++;
