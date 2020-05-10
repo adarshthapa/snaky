@@ -13,6 +13,8 @@ const int HEIGHT = 20;
 int x, y; // position of the player
 int foodX, foodY; // position of the food
 int score;
+int tailX[60], tailY[60];
+int nTail; // increments each time snake eats the food
 
 enum enumDirect {STOP = 0, LEFT, RIGHT, UP, DOWN}; // enumerator for directions
 enumDirect dir;
@@ -71,6 +73,23 @@ void visual() {
 }
 
 void logic() {
+    int prevX = tailX[0];
+    int prevY = tailY[0];
+    int prev2x, prev2y;
+    // firs snake ex: x[0] after the main, is going to follow the the direction of the main (x) snake
+    tailX[0] = x; 
+    tailY[0] = y; 
+    
+    for (int i = 1; i < nTail; i++) {
+        // second member of snake flows first memeber, third -> second and so on
+        prev2x = tailX[i];
+        prev2y = tailY[i];
+        tailX[i] = prevX;
+        tailY[i] = prevY;
+        prevX = prev2x;
+        prevY = prev2y;
+    }
+    
      switch (dir) {
          case UP:
             y--; // helps to move the snake upwards
