@@ -67,7 +67,7 @@ void visual() {
     }
     
     cout << endl;
-    cout << "Score" << score << endl;
+    cout << "Score: " << score << endl;
 }
 
 void logic() {
@@ -86,6 +86,19 @@ void logic() {
             break;
         default:
             break;
+     }
+     
+     // making the snake able to pass through wall and reappear from the reverse of that side
+     if (x >= WIDTH) {
+         x = 0;
+     } else if (x < 0) {
+         x = WIDTH - 1; // if snake hits left most coordinate, then it will transfer to last coordinate of the right side of the arena
+     }
+     
+     if (y >= WIDTH) {
+         y = 0;
+     } else if (y < 0) {
+         y = WIDTH - 1; // if snake hits up most coordinate, then it will transfer to last coordinate of the down side of the arena
      }
      
      //  if position of snake equals with the position of the food, then eat the food, increment score and spawn food to new random location
@@ -127,7 +140,7 @@ int main() {
         visual();
         input();
         logic();
-        std::this_thread::sleep_for (std::chrono::seconds(10));
+        std::this_thread::sleep_for (std::chrono::seconds(50)); // you can reduce the seconds to increase difficulty like 20
     }
     
     return 0;
