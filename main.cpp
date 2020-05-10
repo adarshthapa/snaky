@@ -54,8 +54,20 @@ void visual() {
                     cout << "🐍";
                 else if (i == foodY && j == foodX) 
                     cout << "🐹";
-                else
-                    cout << " ";
+                else {
+                    bool printtail = false;
+                    
+                    for (int k = 0; k < nTail; k++) {
+                        if (tailX[k] == j && tailY[k] == i) {
+                            cout << "O";
+                            printtail = true;
+                        }
+                    }
+                    
+                    if(!print) {
+                        cout << " ";
+                    }
+                }
                     
                     if (j == WIDTH-1)
                         cout << "#";
@@ -125,6 +137,7 @@ void logic() {
          score++;
          foodX = rand() % WIDTH;
          foodY = rand() % HEIGHT;
+         nTail++; // increments the members of the snake as per food eaten
      }
      
 }
